@@ -1,0 +1,12 @@
+[submodule "Backend"]
+	path = Backend
+	url = https://github.com/SBalint2002/PizzaProject-spring.git
+[submodule "Android"]
+	path = Android
+	url = https://github.com/SBalint2002/PizzaProject-android
+[submodule "Webpage"]
+	path = Webpage
+	url = https://github.com/SBalint2002/PizzaProject-React.git
+[submodule "Desktop"]
+	path = Desktop
+	url = https://github.com/makkerzsombor/PizzaProject-JavaFx.git
