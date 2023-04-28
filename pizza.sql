@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2023 at 07:01 PM
+-- Generation Time: Apr 20, 2023 at 08:40 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -37,8 +37,7 @@ CREATE TABLE `new_orders` (
 --
 
 INSERT INTO `new_orders` (`id`, `order_id`) VALUES
-(2, 2),
-(3, 3);
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -61,9 +60,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `location`, `order_date`, `phone_number`, `price`, `ready`, `user_id`) VALUES
-(1, 'Budapest, Thököly út 48-54, 1146', '2023-04-20 18:59:37', '06306461813', 6330, b'1', 1),
-(2, 'Budapest, Thököly út 48-54, 1146', '2023-04-20 18:59:54', '06306461813', 9900, b'0', 1),
-(3, 'Budapest, Thököly út 48-54, 1146', '2023-04-20 19:00:20', '06305489346', 10970, b'0', 1);
+(1, 'Budapest, Thököly út 48-54, 1146', '2023-04-20 20:38:28', '06306461813', 16430, b'1', 1),
+(2, '1045, Budapest, Nap utca 2', '2023-04-20 20:39:19', '06304567543', 9900, b'0', 1);
 
 -- --------------------------------------------------------
 
@@ -83,17 +81,16 @@ CREATE TABLE `order_pizza` (
 
 INSERT INTO `order_pizza` (`id`, `order_id`, `pizza_id`) VALUES
 (1, 1, 1),
-(2, 1, 3),
-(3, 1, 3),
-(4, 2, 2),
-(5, 2, 4),
-(6, 2, 4),
-(7, 2, 6),
-(8, 3, 1),
-(9, 3, 4),
-(10, 3, 5),
-(11, 3, 5),
-(12, 3, 5);
+(2, 1, 1),
+(3, 1, 1),
+(4, 1, 1),
+(5, 1, 2),
+(6, 1, 3),
+(7, 1, 3),
+(8, 2, 1),
+(9, 2, 2),
+(10, 2, 2),
+(11, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -145,11 +142,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`, `role`) VALUES
-(1, 'tesztelek@gmail.com', 'Elek', 'Teszt', '$2y$10$PVN9eAlpECQslQGfCXf68eYsc.ndZL4TzFp8cuU2DUoXmxQuxESX6', 'ADMIN'),
-(2, 'tesztelek2@gmail.com', 'Elek', 'Teszt', '$2y$10$ZRh06rLuh5dTaJSofiia2ObIPBSaiwh/vJShkSJSL7EudHuamReAy', 'USER'),
-(3, 'tesztelek3@gmail.com', 'Elek', 'Teszt', '$2y$10$snG6XUkcSrHjNI.IeUije.C.TLU8RlYDXOIaOdKBbPRGnu.buNa1q', 'USER'),
-(4, 'tesztelek4@gmail.com', 'Elek', 'Teszt', '$2y$10$YLkynqcZSBuK0egZZ2qOJOZKenheMKDNkgQcM2ynuL02IZC4YefT2', 'USER'),
-(5, 'tesztelek5@gmail.com', 'Elek', 'Teszt', '$2y$10$Ci99ogtp1ED.x471oEVWIeeDxD11f3YjLgoz6Z9rSbNv6BhI4sUcu', 'USER');
+(1, 'tesztelek@gmail.com', 'Elek', 'Teszt', '$2y$10$U8tiH/xFU9wmNYPsUjysKu24DCGTC24IWW89Oc.MyAi8781yotTsG', 'ADMIN'),
+(2, 'tesztbela@gmail.com', 'Béla', 'Teszt', '$2y$10$YhOd0NNAbt0pE9DErRUOxus7xWAkidAaDtDpO2WDYtXjmReuHSrDK', 'USER'),
+(3, 'tesztjanos@gmail.com', 'János', 'Teszt', '$2y$10$WfMZ0yO5FPQaWegGBl6o0.y2by0EMo1xdobXOGDmQA2gcK8nxEBnu', 'USER');
 
 --
 -- Indexes for dumped tables
@@ -166,7 +161,8 @@ ALTER TABLE `new_orders`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK32ql8ubntj5uh44ph9659tiih` (`user_id`);
 
 --
 -- Indexes for table `order_pizza`
@@ -197,19 +193,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `new_orders`
 --
 ALTER TABLE `new_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order_pizza`
 --
 ALTER TABLE `order_pizza`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `pizzas`
@@ -221,7 +217,7 @@ ALTER TABLE `pizzas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -232,6 +228,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `new_orders`
   ADD CONSTRAINT `FK2df7jcat3ykdi01a6g6uc8jre` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `FK32ql8ubntj5uh44ph9659tiih` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `order_pizza`
